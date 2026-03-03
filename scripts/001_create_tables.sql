@@ -15,10 +15,22 @@ CREATE TABLE IF NOT EXISTS public.profiles (
 );
 
 ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "profiles_select_own" ON public.profiles FOR SELECT USING (auth.uid() = id);
-CREATE POLICY "profiles_insert_own" ON public.profiles FOR INSERT WITH CHECK (auth.uid() = id);
-CREATE POLICY "profiles_update_own" ON public.profiles FOR UPDATE USING (auth.uid() = id);
-CREATE POLICY "profiles_delete_own" ON public.profiles FOR DELETE USING (auth.uid() = id);
+DO $$ BEGIN
+  CREATE POLICY "profiles_select_own" ON public.profiles FOR SELECT USING (auth.uid() = id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "profiles_insert_own" ON public.profiles FOR INSERT WITH CHECK (auth.uid() = id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "profiles_update_own" ON public.profiles FOR UPDATE USING (auth.uid() = id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "profiles_delete_own" ON public.profiles FOR DELETE USING (auth.uid() = id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
 
 -- Trades table
 CREATE TABLE IF NOT EXISTS public.trades (
@@ -33,10 +45,22 @@ CREATE TABLE IF NOT EXISTS public.trades (
 );
 
 ALTER TABLE public.trades ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "trades_select_own" ON public.trades FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "trades_insert_own" ON public.trades FOR INSERT WITH CHECK (auth.uid() = user_id);
-CREATE POLICY "trades_update_own" ON public.trades FOR UPDATE USING (auth.uid() = user_id);
-CREATE POLICY "trades_delete_own" ON public.trades FOR DELETE USING (auth.uid() = user_id);
+DO $$ BEGIN
+  CREATE POLICY "trades_select_own" ON public.trades FOR SELECT USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "trades_insert_own" ON public.trades FOR INSERT WITH CHECK (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "trades_update_own" ON public.trades FOR UPDATE USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "trades_delete_own" ON public.trades FOR DELETE USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
 
 -- Weekly notes table
 CREATE TABLE IF NOT EXISTS public.weekly_notes (
@@ -50,10 +74,22 @@ CREATE TABLE IF NOT EXISTS public.weekly_notes (
 );
 
 ALTER TABLE public.weekly_notes ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "weekly_notes_select_own" ON public.weekly_notes FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "weekly_notes_insert_own" ON public.weekly_notes FOR INSERT WITH CHECK (auth.uid() = user_id);
-CREATE POLICY "weekly_notes_update_own" ON public.weekly_notes FOR UPDATE USING (auth.uid() = user_id);
-CREATE POLICY "weekly_notes_delete_own" ON public.weekly_notes FOR DELETE USING (auth.uid() = user_id);
+DO $$ BEGIN
+  CREATE POLICY "weekly_notes_select_own" ON public.weekly_notes FOR SELECT USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "weekly_notes_insert_own" ON public.weekly_notes FOR INSERT WITH CHECK (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "weekly_notes_update_own" ON public.weekly_notes FOR UPDATE USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "weekly_notes_delete_own" ON public.weekly_notes FOR DELETE USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
 
 -- Mistakes table
 CREATE TABLE IF NOT EXISTS public.mistakes (
@@ -66,10 +102,22 @@ CREATE TABLE IF NOT EXISTS public.mistakes (
 );
 
 ALTER TABLE public.mistakes ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "mistakes_select_own" ON public.mistakes FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "mistakes_insert_own" ON public.mistakes FOR INSERT WITH CHECK (auth.uid() = user_id);
-CREATE POLICY "mistakes_update_own" ON public.mistakes FOR UPDATE USING (auth.uid() = user_id);
-CREATE POLICY "mistakes_delete_own" ON public.mistakes FOR DELETE USING (auth.uid() = user_id);
+DO $$ BEGIN
+  CREATE POLICY "mistakes_select_own" ON public.mistakes FOR SELECT USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "mistakes_insert_own" ON public.mistakes FOR INSERT WITH CHECK (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "mistakes_update_own" ON public.mistakes FOR UPDATE USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "mistakes_delete_own" ON public.mistakes FOR DELETE USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
 
 -- Important points table
 CREATE TABLE IF NOT EXISTS public.important_points (
@@ -83,10 +131,22 @@ CREATE TABLE IF NOT EXISTS public.important_points (
 );
 
 ALTER TABLE public.important_points ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "important_points_select_own" ON public.important_points FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "important_points_insert_own" ON public.important_points FOR INSERT WITH CHECK (auth.uid() = user_id);
-CREATE POLICY "important_points_update_own" ON public.important_points FOR UPDATE USING (auth.uid() = user_id);
-CREATE POLICY "important_points_delete_own" ON public.important_points FOR DELETE USING (auth.uid() = user_id);
+DO $$ BEGIN
+  CREATE POLICY "important_points_select_own" ON public.important_points FOR SELECT USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "important_points_insert_own" ON public.important_points FOR INSERT WITH CHECK (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "important_points_update_own" ON public.important_points FOR UPDATE USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "important_points_delete_own" ON public.important_points FOR DELETE USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
 
 -- Rules table
 CREATE TABLE IF NOT EXISTS public.rules (
@@ -99,10 +159,22 @@ CREATE TABLE IF NOT EXISTS public.rules (
 );
 
 ALTER TABLE public.rules ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "rules_select_own" ON public.rules FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "rules_insert_own" ON public.rules FOR INSERT WITH CHECK (auth.uid() = user_id);
-CREATE POLICY "rules_update_own" ON public.rules FOR UPDATE USING (auth.uid() = user_id);
-CREATE POLICY "rules_delete_own" ON public.rules FOR DELETE USING (auth.uid() = user_id);
+DO $$ BEGIN
+  CREATE POLICY "rules_select_own" ON public.rules FOR SELECT USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "rules_insert_own" ON public.rules FOR INSERT WITH CHECK (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "rules_update_own" ON public.rules FOR UPDATE USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "rules_delete_own" ON public.rules FOR DELETE USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
 
 -- Skip days table
 CREATE TABLE IF NOT EXISTS public.skip_days (
@@ -114,64 +186,19 @@ CREATE TABLE IF NOT EXISTS public.skip_days (
 );
 
 ALTER TABLE public.skip_days ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "skip_days_select_own" ON public.skip_days FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "skip_days_insert_own" ON public.skip_days FOR INSERT WITH CHECK (auth.uid() = user_id);
-CREATE POLICY "skip_days_update_own" ON public.skip_days FOR UPDATE USING (auth.uid() = user_id);
-CREATE POLICY "skip_days_delete_own" ON public.skip_days FOR DELETE USING (auth.uid() = user_id);
-
--- Auto-create profile on signup trigger
-CREATE OR REPLACE FUNCTION public.handle_new_user()
-RETURNS TRIGGER
-LANGUAGE plpgsql
-SECURITY DEFINER
-SET search_path = public
-AS $$
-BEGIN
-  INSERT INTO public.profiles (id, nickname, account_size, balance, initial_balance)
-  VALUES (
-    NEW.id,
-    COALESCE(NEW.raw_user_meta_data ->> 'nickname', 'Trader'),
-    COALESCE((NEW.raw_user_meta_data ->> 'account_size')::numeric, 10000),
-    COALESCE((NEW.raw_user_meta_data ->> 'account_size')::numeric, 10000),
-    COALESCE((NEW.raw_user_meta_data ->> 'account_size')::numeric, 10000)
-  )
-  ON CONFLICT (id) DO NOTHING;
-
-  -- Insert default rules for new user
-  INSERT INTO public.rules (user_id, text, sort_order) VALUES
-    (NEW.id, 'Only trade after 11:00 Dubai time (GMT+4)', 0),
-    (NEW.id, 'Close all positions by 22:00 Dubai time', 1),
-    (NEW.id, 'Maximum 1 trade per day', 2),
-    (NEW.id, 'Use 15-minute chart for analysis', 3),
-    (NEW.id, 'Weekly goal: +2% on account', 4),
-    (NEW.id, '1 profitable trade per week = week is done', 5);
-
-  RETURN NEW;
-END;
-$$;
-
-DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
-
-CREATE TRIGGER on_auth_user_created
-  AFTER INSERT ON auth.users
-  FOR EACH ROW
-  EXECUTE FUNCTION public.handle_new_user();
-
--- Create storage bucket for avatars
-INSERT INTO storage.buckets (id, name, public) VALUES ('avatars', 'avatars', true)
-ON CONFLICT (id) DO NOTHING;
-
--- Storage policies for avatars
-CREATE POLICY "avatar_select_all" ON storage.objects FOR SELECT TO public USING (bucket_id = 'avatars');
-CREATE POLICY "avatar_insert_own" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'avatars' AND (storage.foldername(name))[1] = auth.uid()::text);
-CREATE POLICY "avatar_update_own" ON storage.objects FOR UPDATE TO authenticated USING (bucket_id = 'avatars' AND (storage.foldername(name))[1] = auth.uid()::text);
-CREATE POLICY "avatar_delete_own" ON storage.objects FOR DELETE TO authenticated USING (bucket_id = 'avatars' AND (storage.foldername(name))[1] = auth.uid()::text);
-
--- Enable realtime for all tables
-ALTER PUBLICATION supabase_realtime ADD TABLE public.profiles;
-ALTER PUBLICATION supabase_realtime ADD TABLE public.trades;
-ALTER PUBLICATION supabase_realtime ADD TABLE public.weekly_notes;
-ALTER PUBLICATION supabase_realtime ADD TABLE public.mistakes;
-ALTER PUBLICATION supabase_realtime ADD TABLE public.important_points;
-ALTER PUBLICATION supabase_realtime ADD TABLE public.rules;
-ALTER PUBLICATION supabase_realtime ADD TABLE public.skip_days;
+DO $$ BEGIN
+  CREATE POLICY "skip_days_select_own" ON public.skip_days FOR SELECT USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "skip_days_insert_own" ON public.skip_days FOR INSERT WITH CHECK (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "skip_days_update_own" ON public.skip_days FOR UPDATE USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "skip_days_delete_own" ON public.skip_days FOR DELETE USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
